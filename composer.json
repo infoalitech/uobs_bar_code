@@ -1,0 +1,15 @@
+{
+    "name": "myapp/qr-code-generator",
+    "description": "QR Code Generator with local libraries",
+    "type": "project",
+    "require": {
+        "endroid/qr-code": "^5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@email.com"
+        }
+    ]
+}

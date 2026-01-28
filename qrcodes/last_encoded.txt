@@ -1,0 +1,9 @@
+Original: 
+Cupiditate nisi at q
+adsfdas
+
+Encoded: 
+Cupiditate%20nisi%20at%20q%0D%0Aadsfdas
+
+URL: 
+https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=Cupiditate%20nisi%20at%20q%0D%0Aadsfdas&choe=UTF-8&chld=H|0

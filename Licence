@@ -1,0 +1,59 @@
+
+## Alternative: Simplified Version with Pure PHP Library
+
+If you prefer an even simpler approach without complex dependencies, here's a minimalist version using the `phpqrcode` library:
+
+**simple-qr-generator.php**
+```php
+<?php
+/**
+ * Simple QR Code Generator using phpqrcode library
+ */
+
+// Include the phpqrcode library
+require_once 'phpqrcode/qrlib.php';
+
+// Create output directory
+if (!file_exists('qrcodes')) {
+    mkdir('qrcodes', 0755);
+}
+
+// Process form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $text = $_POST['text'] ?? '';
+    $size = $_POST['size'] ?? 10;
+    $margin = $_POST['margin'] ?? 1;
+    
+    if (!empty($text)) {
+        // Generate unique filename
+        $filename = 'qrcodes/qr-' . md5($text . time()) . '.png';
+        
+        // Generate QR code
+        QRcode::png($text, $filename, QR_ECLEVEL_L, $size, $margin);
+        
+        // Display result
+        echo '<!DOCTYPE html><html><head><title>QR Code Generated</title></head><body>';
+        echo '<h1>QR Code Generated!</h1>';
+        echo '<img src="' . $filename . '" alt="QR Code">';
+        echo '<p><a href="' . $filename . '" download>Download QR Code</a></p>';
+        echo '<p><a href="simple-qr-generator.php">Generate Another</a></p>';
+        echo '</body></html>';
+        exit;
+    }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple QR Code Generator</title>
+</head>
+<body>
+    <h1>Simple QR Code Generator</h1>
+    <form method="POST">
+        <textarea name="text" rows="4" cols="50" placeholder="Enter text or URL"></textarea><br>
+        <label>Size: <input type="number" name="size" value="10" min="1" max="20"></label><br>
+        <label>Margin: <input type="number" name="margin" value="1" min="0" max="10"></label><br>
+        <button type="submit">Generate QR Code</button>
+    </form>
+</body>
+</html>
