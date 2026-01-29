@@ -16,7 +16,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UOBS QR Code Generator</title>
+    <title>UOBS QR Code Generator - University of Baltistan Skardu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -27,7 +27,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         body {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            background: linear-gradient(135deg, #0c2c54 0%, #1a4b8c 50%, #2a6cb8 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -62,9 +62,9 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .header {
-            background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+            background: linear-gradient(90deg, #0c2c54 0%, #1a4b8c 50%, #2a6cb8 100%);
             color: white;
-            padding: 35px 40px;
+            padding: 25px 40px 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -90,47 +90,72 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         
         .logo-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 10px;
         }
         
-        .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+        .logo-img {
+            width: 80px;
+            height: 80px;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            padding: 8px;
         }
         
-        .logo i {
-            font-size: 32px;
-            color: #1565c0;
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+        
+        .university-name {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
         
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(90deg, #ffffff, #bbdefb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+        }
+        
+        .header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #bbdefb;
         }
         
         .header p {
             opacity: 0.95;
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.1rem;
+            max-width: 700px;
             margin: 0 auto;
             line-height: 1.6;
             font-weight: 300;
+            color: #e3f2fd;
+        }
+        
+        .document-reference {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: inline-block;
+            border-left: 3px solid #4fc3f7;
         }
         
         .content {
@@ -143,7 +168,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         .form-section {
             flex: 1;
             min-width: 350px;
-            padding: 45px;
+            padding: 40px;
             border-right: 1px solid #e8eaf6;
             background: #f8f9ff;
             position: relative;
@@ -156,13 +181,13 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             right: -1px;
             width: 1px;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, #3949ab, transparent);
+            background: linear-gradient(to bottom, transparent, #2a6cb8, transparent);
         }
         
         .result-section {
             flex: 1;
             min-width: 350px;
-            padding: 45px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -171,7 +196,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .form-group {
-            margin-bottom: 28px;
+            margin-bottom: 25px;
             position: relative;
         }
         
@@ -179,7 +204,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
-            color: #1a237e;
+            color: #0c2c54;
             font-size: 1.1rem;
             display: flex;
             align-items: center;
@@ -187,12 +212,12 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         label i {
-            color: #3949ab;
+            color: #2a6cb8;
         }
         
         textarea, input[type="text"] {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             border: 2px solid #e1e1e1;
             border-radius: 12px;
             font-size: 1rem;
@@ -209,9 +234,9 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         textarea:focus, input[type="text"]:focus {
-            border-color: #3949ab;
+            border-color: #2a6cb8;
             outline: none;
-            box-shadow: 0 6px 12px rgba(57, 73, 171, 0.2);
+            box-shadow: 0 6px 12px rgba(42, 108, 184, 0.2);
             transform: translateY(-2px);
         }
         
@@ -223,17 +248,17 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .options {
-            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            background: linear-gradient(135deg, #e8eaf6 0%, #e3f2fd 100%);
             padding: 25px;
             border-radius: 15px;
             margin-top: 15px;
-            border: 1px solid #c5cae9;
+            border: 1px solid #bbdefb;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .options h3 {
             margin-bottom: 20px;
-            color: #1a237e;
+            color: #0c2c54;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -247,13 +272,13 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         .option-group label {
             margin-bottom: 8px;
             font-size: 1rem;
-            color: #5c6bc0;
+            color: #1a4b8c;
         }
         
         select {
             width: 100%;
             padding: 14px;
-            border: 2px solid #c5cae9;
+            border: 2px solid #bbdefb;
             border-radius: 10px;
             background: white;
             font-size: 1rem;
@@ -263,16 +288,16 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         select:focus {
-            border-color: #3949ab;
+            border-color: #2a6cb8;
             outline: none;
-            box-shadow: 0 4px 8px rgba(57, 73, 171, 0.2);
+            box-shadow: 0 4px 8px rgba(42, 108, 184, 0.2);
         }
         
         .btn {
-            background: linear-gradient(90deg, #1a237e 0%, #3949ab 100%);
+            background: linear-gradient(90deg, #0c2c54 0%, #2a6cb8 100%);
             color: white;
             border: none;
-            padding: 20px 35px;
+            padding: 18px 35px;
             font-size: 1.2rem;
             font-weight: 600;
             border-radius: 15px;
@@ -284,7 +309,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
-            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.3);
+            box-shadow: 0 8px 20px rgba(12, 44, 84, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -302,7 +327,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(26, 35, 126, 0.4);
+            box-shadow: 0 12px 25px rgba(12, 44, 84, 0.4);
         }
         
         .btn:hover::before {
@@ -324,12 +349,12 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 2px dashed #c5cae9;
+            border: 2px dashed #bbdefb;
             box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
         }
         
         .qr-placeholder {
-            color: #7986cb;
+            color: #1a4b8c;
             font-size: 1.3rem;
             padding: 40px 20px;
             text-align: center;
@@ -338,7 +363,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         .qr-placeholder i {
             font-size: 4rem;
             margin-bottom: 20px;
-            color: #c5cae9;
+            color: #bbdefb;
             display: block;
         }
         
@@ -359,7 +384,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .qr-info-box {
-            background: #e8eaf6;
+            background: #e3f2fd;
             padding: 15px;
             border-radius: 10px;
             margin: 15px 0;
@@ -368,7 +393,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .qr-info-box h4 {
-            color: #1a237e;
+            color: #0c2c54;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -389,7 +414,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         }
         
         .download-btn {
-            background: linear-gradient(90deg, #2e7d32 0%, #4caf50 100%);
+            background: linear-gradient(90deg, #0c7c42 0%, #2ecc71 100%);
             color: white;
             border: none;
             padding: 16px 35px;
@@ -403,12 +428,12 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             gap: 12px;
             margin-top: 20px;
             transition: all 0.3s;
-            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 6px 15px rgba(12, 124, 66, 0.3);
         }
         
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 9px 20px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 9px 20px rgba(12, 124, 66, 0.4);
             text-decoration: none;
             color: white;
         }
@@ -428,15 +453,15 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         
         .success {
             background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            color: #2e7d32;
+            color: #0c7c42;
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 25px;
-            border-left: 6px solid #2e7d32;
+            border-left: 6px solid #0c7c42;
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.1);
+            box-shadow: 0 5px 15px rgba(12, 124, 66, 0.1);
         }
         
         .examples {
@@ -447,7 +472,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         
         .examples h3 {
             margin-bottom: 20px;
-            color: #3949ab;
+            color: #2a6cb8;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -461,7 +486,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
         
         .example-btn {
             background: white;
-            border: 2px solid #c5cae9;
+            border: 2px solid #bbdefb;
             padding: 10px 18px;
             border-radius: 25px;
             cursor: pointer;
@@ -470,15 +495,15 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #5c6bc0;
+            color: #1a4b8c;
         }
         
         .example-btn:hover {
-            background: #3949ab;
+            background: #2a6cb8;
             color: white;
-            border-color: #3949ab;
+            border-color: #2a6cb8;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(57, 73, 171, 0.2);
+            box-shadow: 0 4px 8px rgba(42, 108, 184, 0.2);
         }
         
         .footer {
@@ -506,16 +531,16 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             }
             
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
-            .logo {
-                width: 50px;
-                height: 50px;
+            .header h2 {
+                font-size: 1.4rem;
             }
             
-            .logo i {
-                font-size: 24px;
+            .logo-img {
+                width: 60px;
+                height: 60px;
             }
         }
         
@@ -536,7 +561,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #00e676, transparent);
+            background: linear-gradient(90deg, transparent, #2ecc71, transparent);
             animation: scan 2s linear infinite;
             border-radius: 2px;
         }
@@ -556,19 +581,68 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             max-width: 280px;
             word-break: break-word;
         }
+        
+        .official-examples {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #90caf9;
+        }
+        
+        .official-examples h3 {
+            color: #0c2c54;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .official-examples p {
+            margin-bottom: 10px;
+            color: #1a4b8c;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .official-example-btn {
+            background: #0c2c54;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .official-example-btn:hover {
+            background: #2a6cb8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(42, 108, 184, 0.3);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <div class="logo">
-                    <i class="fas fa-qrcode"></i>
+                <div class="logo-img">
+                    <img src="https://uobs.edu.pk/images/logo/logo.png" alt="University of Baltistan Skardu Logo">
                 </div>
-                <div>
-                    <h1>UOBS BarCode</h1>
-                    <p>Professional QR Code Generation System for University of Business Studies</p>
+                <div class="university-name">
+                    <h1>University of Baltistan Skardu</h1>
+                    <h2>QR Code Generator</h2>
+                    <p>Professional QR Code Generation System for University Official Documents</p>
                 </div>
+            </div>
+            <div class="document-reference">
+                <i class="fas fa-file-alt"></i> Ref: UOBS-Estt-1(3)/2018/1234 | Date: <?php echo date("F d, Y"); ?>
             </div>
         </div>
         
@@ -619,7 +693,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
                             type="text" 
                             id="filename" 
                             name="filename" 
-                            placeholder="my-qr-code (default: qr-code)"
+                            placeholder="uobs-document-qr (default: qr-code)"
                             value="<?php echo htmlspecialchars($filename); ?>"
                         >
                     </div>
@@ -665,38 +739,34 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
                     </button>
                 </form>
                 
-                <div class="examples">
+                <div class="official-examples">
                     <h3>
-                        <i class="fas fa-lightbulb"></i>
-                        Try these examples:
+                        <i class="fas fa-university"></i>
+                        Official University Examples:
                     </h3>
-                    <div class="example-list">
-                        <button type="button" class="example-btn" onclick="setExample('https://github.com')">
-                            <i class="fab fa-github"></i>
-                            GitHub URL
-                        </button>
-                        <button type="button" class="example-btn" onclick="setExample('Hello World! This is a test QR code.')">
-                            <i class="fas fa-text-height"></i>
-                            Sample Text
-                        </button>
-                        <button type="button" class="example-btn" onclick="setExample('WIFI:S:UOBS-WiFi;T:WPA2;P:Campus2024;;')">
-                            <i class="fas fa-wifi"></i>
-                            WiFi Connection
-                        </button>
-                        <button type="button" class="example-btn" onclick="setExample('mailto:admissions@uobs.edu')">
-                            <i class="fas fa-envelope"></i>
-                            Email Address
-                        </button>
-                        <button type="button" class="example-btn" onclick="setExample('BEGIN:VCARD\\nVERSION:3.0\\nFN:Student Name\\nORG:UOBS\\nTEL:+1234567890\\nEMAIL:student@uobs.edu\\nEND:VCARD')">
-                            <i class="fas fa-address-card"></i>
-                            Contact Card
-                        </button>
-                        <button type="button" class="example-btn" onclick="setExample('UOBS-ID: STU2024-001\\nName: John Smith\\nCourse: BSc Computer Science\\nYear: 2024')">
-                            <i class="fas fa-id-card"></i>
-                            Student ID
-                        </button>
-                    </div>
+                    <p>Generate QR codes for official university documents and resources:</p>
+                    <button type="button" class="official-example-btn" onclick="setOfficialExample('Notification of Selection Committee', 'UOBS-Estt-1(3)/2018/1234\\nDate: January 28, 2026\\nSub: Notification of Selection Committee\\nRef: Appointment of Teaching Staff\\nThe selection committee meeting is scheduled for...')">
+                        <i class="fas fa-users"></i>
+                        Selection Committee
+                    </button>
+                    <button type="button" class="official-example-btn" onclick="setOfficialExample('Student ID Card', 'UNIVERSITY OF BALTISTAN SKARDU\\nStudent ID: UOBS2024-00123\\nName: John Smith\\nProgram: BS Computer Science\\nValidity: 2024-2028\\nContact: registrar@uobs.edu.pk')">
+                        <i class="fas fa-id-card"></i>
+                        Student ID
+                    </button>
+                    <button type="button" class="official-example-btn" onclick="setOfficialExample('Admission Portal', 'https://admissions.uobs.edu.pk\\nUniversity of Baltistan Skardu\\nAdmission Portal\\nApply online for Fall 2024\\nDeadline: June 30, 2024')">
+                        <i class="fas fa-graduation-cap"></i>
+                        Admissions
+                    </button>
+                    <button type="button" class="official-example-btn" onclick="setOfficialExample('Campus WiFi', 'WIFI:S:UOBS-Campus;T:WPA2;P:Student@2024;;\\nUniversity of Baltistan Skardu\\nConnect to campus WiFi\\nFor assistance: ithelp@uobs.edu.pk')">
+                        <i class="fas fa-wifi"></i>
+                        Campus WiFi
+                    </button>
+                    <button type="button" class="official-example-btn" onclick="setOfficialExample('Library Access', 'https://library.uobs.edu.pk\\nUOBS Digital Library\\nAccess Code: UOBS-LIB-2024\\n24/7 Online Resources\\nContact: librarian@uobs.edu.pk')">
+                        <i class="fas fa-book"></i>
+                        Library
+                    </button>
                 </div>
+            
             </div>
             
             <div class="result-section">
@@ -754,15 +824,18 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
                 </div>
                 
                 <div style="margin-top: 25px; text-align: center; color: #666; font-size: 0.9rem;">
-                    <p><i class="fas fa-shield-alt"></i> Secure • Fast • Reliable</p>
+                    <p><i class="fas fa-shield-alt"></i> Secure • Official • University Approved</p>
                     <p>QR codes can store up to 4,296 alphanumeric characters</p>
+                    <p style="color: #1a4b8c; font-weight: 600; margin-top: 10px;">
+                        <i class="fas fa-map-marker-alt"></i> University of Baltistan Skardu, Gilgit-Baltistan, Pakistan
+                    </p>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>© 2024 University of Business Studies - QR Code Generator | Version 2.0</p>
-            <p>For technical support, contact: <strong>it-support@uobs.edu</strong></p>
+            <p>© 2024 University of Baltistan Skardu - Official QR Code Generator | Version 2.0</p>
+            <p>For technical support, contact: <strong>it-support@uobs.edu.pk</strong> | Phone: +92-XXX-XXXXXXX</p>
         </div>
     </div>
     
@@ -771,8 +844,66 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
             // Replace escaped newlines with actual newlines
             var actualText = text.replace(/\\n/g, '\n');
             document.getElementById('qrText').value = actualText;
+            document.getElementById('filename').value = 'uobs-qr-' + Date.now().toString().slice(-6);
             updateCharCount();
         }
+        
+        function setOfficialExample(title, text) {
+            // Replace escaped newlines with actual newlines
+            var actualText = text.replace(/\\n/g, '\n');
+            document.getElementById('qrText').value = actualText;
+            document.getElementById('filename').value = 'uobs-' + title.toLowerCase().replace(/\s+/g, '-');
+            updateCharCount();
+            
+            // Show a small notification
+            showNotification('Example loaded: ' + title);
+        }
+        
+        function showNotification(message) {
+            // Create notification element
+            var notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #0c2c54;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                max-width: 300px;
+            `;
+            
+            notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(function() {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(function() {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add CSS for animations
+        var style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
         
         function updateCharCount() {
             var text = document.getElementById('qrText').value;
@@ -796,7 +927,7 @@ unset($_SESSION['error'], $_SESSION['success'], $_SESSION['image_url'], $_SESSIO
                 var text = document.getElementById('qrText').value.trim();
                 if (text.length === 0) {
                     e.preventDefault();
-                    alert('Please enter some text to generate QR code.');
+                    showNotification('Please enter some text to generate QR code.');
                     return false;
                 }
                 
